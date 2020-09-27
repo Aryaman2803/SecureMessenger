@@ -16,13 +16,31 @@
             android:paddingTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_security_24"/>
+            android:src="@drawable/ic_baseline_security_24" />
 
         <Button
             android:id="@+id/aesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="AES" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:src="@drawable/ic_baseline_security_24" />
+
+        <Button
+            android:id="@+id/desButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DES" />
     </LinearLayout>
 
 </LinearLayout>

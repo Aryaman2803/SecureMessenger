@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -30,7 +31,7 @@ public class AES extends AppCompatActivity {
 
     String inputText;
     String outputText = "";
-    public static String pass = "hello";
+    public static String pass = "PASSWORD_FOR_KEY";
     String AES = "AES";
 
 
@@ -103,6 +104,25 @@ public class AES extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!TextUtils.isEmpty(outputText)) {
+                    try {
+                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, outputText);
+                        shareIntent.setType("text/plain");
+                        startActivity(shareIntent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    Toast.makeText(AES.this, "Output Message Empty", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
