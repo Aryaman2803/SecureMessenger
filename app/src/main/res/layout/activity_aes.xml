@@ -35,18 +35,21 @@
             android:id="@+id/decryptBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Decrypt"/>
+            android:text="Decrypt" />
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Output"/>
+        android:text="Output" />
+
     <TextView
         android:id="@+id/outputView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#009688"
-        android:textIsSelectable="true"/>
+        android:textIsSelectable="true" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,6 +65,6 @@
             android:id="@+id/shareBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="share"/>
+            android:text="share" />
     </LinearLayout>
 </LinearLayout>
