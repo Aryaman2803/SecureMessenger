@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".RSA"
+            android:label="RSA"></activity>
+        <activity
+            android:name=".MD5"
+            android:label="Message Digest 5" />
+        <activity
             android:name=".DES"
-            android:label="Data Encryption Standard"></activity>
+            android:label="Data Encryption Standard" />
         <activity
             android:name=".AES"
             android:label="Advance Encryption" />

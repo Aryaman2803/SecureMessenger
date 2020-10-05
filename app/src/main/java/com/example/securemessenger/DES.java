@@ -1,12 +1,9 @@
 package com.example.securemessenger;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -28,7 +28,6 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.DESedeKeySpec;
 
 public class DES extends AppCompatActivity {
     /**
@@ -65,13 +64,13 @@ public class DES extends AppCompatActivity {
         setContentView(R.layout.activity_des);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        enc = (Button) findViewById(R.id.encrpytBtn);
-        dec = (Button) findViewById(R.id.decryptBtn);
-        reset = (Button) findViewById(R.id.resetBtn);
-        share = (Button) findViewById(R.id.shareBtn);
+        enc = findViewById(R.id.encrpytBtn);
+        dec = findViewById(R.id.decryptBtn);
+        reset = findViewById(R.id.resetBtn);
+        share = findViewById(R.id.shareBtn);
 
-        inputView = (EditText) findViewById(R.id.inputView);
-        outputView = (TextView) findViewById(R.id.outputView);
+        inputView = findViewById(R.id.inputView);
+        outputView = findViewById(R.id.outputView);
 
         /**INITIALIZING KEY GENERATION PART**/
         myEncryptionKey = myEncKey;
@@ -134,6 +133,37 @@ public class DES extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    inputView.setText(null);
+                    outputText = null;
+                    outputView.setText(null);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!TextUtils.isEmpty(outputText)) {
+                    try {
+                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, outputText);
+                        shareIntent.setType("text/plain");
+                        startActivity(shareIntent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    Toast.makeText(DES.this, "Output Message Empty", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

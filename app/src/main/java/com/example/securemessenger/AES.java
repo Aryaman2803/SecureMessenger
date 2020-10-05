@@ -1,9 +1,5 @@
 package com.example.securemessenger;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,8 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -42,14 +41,14 @@ public class AES extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //BUTTONS
-        enc = (Button) findViewById(R.id.encrpytBtn);
-        dec = (Button) findViewById(R.id.decryptBtn);
-        reset = (Button) findViewById(R.id.resetBtn);
-        share = (Button) findViewById(R.id.shareBtn);
+        enc = findViewById(R.id.encrpytBtn);
+        dec = findViewById(R.id.decryptBtn);
+        reset = findViewById(R.id.resetBtn);
+        share = findViewById(R.id.shareBtn);
 
         //INPUT OUTPUT FIELDS
-        inputView = (EditText) findViewById(R.id.inputView);
-        outputView = (TextView) findViewById(R.id.outputView);
+        inputView = findViewById(R.id.inputView);
+        outputView = findViewById(R.id.outputView);
 
         // Start Encrytping
         enc.setOnClickListener(new View.OnClickListener() {
@@ -95,12 +94,14 @@ public class AES extends AppCompatActivity {
             }
         });
 
+
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    inputView.setText("");
-                    outputView.setText("");
+                    inputView.setText(null);
+                    outputText = null;
+                    outputView.setText(null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -152,7 +153,7 @@ public class AES extends AppCompatActivity {
      **/
     private SecretKey generateKey(String pass) throws Exception {
         final MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] bytes = pass.getBytes("UTF-8");
+        byte[] bytes = pass.getBytes(StandardCharsets.UTF_8);
         digest.update(bytes, 0, bytes.length);
         byte[] key = digest.digest();
         SecretKeySpec secretKeySpec = new SecretKeySpec(key, AES);
