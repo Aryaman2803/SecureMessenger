@@ -29,7 +29,7 @@
         android:background="#D3D3D3"
         android:fontFamily="sans-serif-condensed-medium"
         android:hint="Message"
-        android:textColor="#ffffff"
+        android:textColor="#36454f"
         android:textFontWeight="400" />
 
     <LinearLayout
@@ -88,7 +88,7 @@
         android:layout_marginRight="20dp"
         android:background="#D3D3D3"
         android:fontFamily="sans-serif-condensed-medium"
-        android:textColor="#ffffff"
+        android:textColor="#36454f"
         android:textFontWeight="700"
         android:textIsSelectable="true" />
 
