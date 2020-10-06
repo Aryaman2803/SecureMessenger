@@ -1,6 +1,8 @@
 package com.example.securemessenger;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.UnsupportedEncodingException;
@@ -63,7 +66,18 @@ public class DES extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_des);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+// Define ActionBar object
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
 
+        // Define ColorDrawable object and parse color
+        // using parseColor method
+        // with color hash code as its parameter
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#003459"));
+
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
         enc = findViewById(R.id.encrpytBtn);
         dec = findViewById(R.id.decryptBtn);
         reset = findViewById(R.id.resetBtn);
@@ -114,7 +128,7 @@ public class DES extends AppCompatActivity {
                     outputView.setText(outputText);
                     //Toast.makeText(DES.this, "Encrypt Button working!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(DES.this, "Output Field Empty!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DES.this, "Output Field Empty!", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -127,9 +141,14 @@ public class DES extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     inputText = inputView.getText().toString();
-                    outputText = decrypt(inputText);
-                    outputView.setText(outputText);
-                    Toast.makeText(DES.this, "Decrypt Button Working!", Toast.LENGTH_SHORT).show();
+
+                    if (TextUtils.isEmpty(inputText)) {
+                        Toast.makeText(DES.this, "Input Field Empty", Toast.LENGTH_SHORT).show();
+                    } else {
+                        outputText = decrypt(inputText);
+                        outputView.setText(outputText);
+                        //Toast.makeText(DES.this, "Decrypt Button Working!", Toast.LENGTH_SHORT).show();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

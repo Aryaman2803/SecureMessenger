@@ -1,6 +1,8 @@
 package com.example.securemessenger;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.nio.charset.StandardCharsets;
@@ -39,6 +42,18 @@ public class AES extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aes);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Define ActionBar object
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        // Define ColorDrawable object and parse color
+        // using parseColor method
+        // with color hash code as its parameter
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#003459"));
+
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         //BUTTONS
         enc = findViewById(R.id.encrpytBtn);
@@ -59,15 +74,15 @@ public class AES extends AppCompatActivity {
                     if (!TextUtils.isEmpty(inputText)) {
                         outputText = encrypt(inputText, pass);
                         outputView.setText(outputText);
-                        Toast.makeText(AES.this, "Encrypt Button working", Toast.LENGTH_SHORT).show();
-                        System.out.println("Message: " + inputText);
+                        //Toast.makeText(AES.this, "Encrypt Button working", Toast.LENGTH_SHORT).show();
+                        // System.out.println("Message: " + inputText);
                     } else {
                         Toast.makeText(AES.this, "Input Field Empty", Toast.LENGTH_SHORT).show();
                     }
 
 
                 } catch (Exception e) {
-                    Toast.makeText(AES.this, "Button not working", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(AES.this, "Button not working", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -81,8 +96,8 @@ public class AES extends AppCompatActivity {
                     if (!TextUtils.isEmpty(inputText)) {
                         outputText = decrypt(inputText, pass);
                         outputView.setText(outputText);
-                        Toast.makeText(AES.this, "Decrypt Button working", Toast.LENGTH_SHORT).show();
-                        System.out.println("Message: " + outputText);
+                        // Toast.makeText(AES.this, "Decrypt Button working", Toast.LENGTH_SHORT).show();
+                        //System.out.println("Message: " + outputText);
                     } else {
                         Toast.makeText(AES.this, "Input Field Empty", Toast.LENGTH_SHORT).show();
 

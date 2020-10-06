@@ -1,6 +1,8 @@
 package com.example.securemessenger;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.nio.charset.StandardCharsets;
@@ -99,6 +102,19 @@ public class RSA extends AppCompatActivity {
         setContentView(R.layout.activity_rsa);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // Define ActionBar object
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        // Define ColorDrawable object and parse color
+        // using parseColor method
+        // with color hash code as its parameter
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#003459"));
+
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+
 
         //BUTTONS
         enc = findViewById(R.id.encrpytBtn);
@@ -128,7 +144,7 @@ public class RSA extends AppCompatActivity {
                 if (!TextUtils.isEmpty(inputText)) {
                     outputText = encryptRSAToString(inputText, publicKeyBytesBase64);
                     outputView.setText(outputText);
-                    Toast.makeText(RSA.this, "Encrypt Button Workin", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RSA.this, "Encrypt Button Workin", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(RSA.this, "Input Field Empty!", Toast.LENGTH_SHORT).show();
                 }

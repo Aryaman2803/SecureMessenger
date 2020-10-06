@@ -3,60 +3,146 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f9f1f1"
     android:orientation="vertical"
     tools:context=".MD5">
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter Message" />
+        android:layout_marginLeft="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="Enter Message"
+        android:textColor="#000000"
+        android:textFontWeight="700"
+        android:textSize="25sp" />
 
     <EditText
-
         android:id="@+id/inputView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#4fc3f7"
-        android:hint="Message" />
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#D3D3D3"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="Message"
+        android:textColor="#ffffff"
+        android:textFontWeight="400" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp">
 
-        <Button
-            android:id="@+id/encryptBtn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:text="Encrypt" />
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/encryptBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Encrypt" />
+        </LinearLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="130dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginRight="50dp"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <Button-->
+        <!--                android:id="@+id/decryptBtn"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Decrypt" />-->
+
+        <!--        </LinearLayout>-->
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Output" />
+        android:layout_marginLeft="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:paddingBottom="15dp"
+        android:text="Output Text"
+        android:textColor="#000000"
+        android:textFontWeight="500"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/outputView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#009688" />
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#D3D3D3"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#ffffff"
+        android:textFontWeight="700"
+        android:textIsSelectable="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="25dp">
 
-        <Button
-            android:id="@+id/resetBtn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:text="reset" />
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/shareBtn"
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/resetBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reset" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:text="share" />
+            android:layout_marginRight="50dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/shareBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Share" />
+
+        </LinearLayout>
     </LinearLayout>
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal">-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/resetBtn"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="reset" />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/shareBtn"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="share" />-->
+    <!--    </LinearLayout>-->
 </LinearLayout>
